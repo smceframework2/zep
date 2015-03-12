@@ -17,9 +17,15 @@ before_script:
 - ./install-json
 - ./install -c
 - zephir init Smce
-- mv ../zep smce
-- cd smce
+- mv ../zep smce/smce
+- cd smce/smce
 - zephir build
+- cd ..
+- cd ..
+- git clone https://github.com/smceframework2/test
+- cd test
+
+script:  phpunit --configuration phpunit.xml --process-isolation
 
 
 
