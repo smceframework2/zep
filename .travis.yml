@@ -18,9 +18,8 @@ before_script:
 - ./install -c
 - zephir init Smce
 - chmod -R 777 .
-- ls -a
 - mv ../smce smce
-- cd smce/smce
+- cd smce
 - ls -a
 - zephir build
 - echo "extension = smce.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
