@@ -17,7 +17,7 @@ before_script:
 - ./install-json
 - ./install -c
 - zephir init Smce
-- mv ../zep smce/smce
+- mv ../smce smce
 - cd smce/smce
 - zephir build
 - cd ..
