@@ -4,7 +4,7 @@
  * @author Samed Ceylan
  * @link http://www.samedceylan.com/
  * @copyright 2015 SmceFramework 2
- * @github https://github.com/smceframework
+ * @github https://github.com/smceframework2
  */
 
 namespace Smce\Core\Di;
