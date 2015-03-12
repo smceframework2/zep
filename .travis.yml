@@ -18,6 +18,7 @@ before_script:
 - ./install -c
 - zephir init Smce
 - chmod -R 777 .
+- ls -a
 - mv ../smce smce
 - cd smce/smce
 - ls -a
