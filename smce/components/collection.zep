@@ -42,15 +42,6 @@ class Collection
 
    
 
-    public function pull(key, dt = null)
-    {
-        
-        return array_pull(this->items, key, dt);
-
-    }
-
-
-
     public function pop()
     {
         
@@ -80,7 +71,6 @@ class Collection
             return this->items[key];
         }
         
-        return value(dt);
     }
 
     public function flip()
@@ -107,11 +97,7 @@ class Collection
         return new $static(array_keys(this->items));
     }
 
-    public function lists(string value, string key = null) -> array
-    {
-        
-        return array_pluck(this->items, value, key);
-    }
+   
 
     public function merge(array items)
     {
