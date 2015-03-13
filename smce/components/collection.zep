@@ -23,12 +23,7 @@ class Collection
         return this;
     }
 
-    public function $fetch(string key)
-    {
-        
-        return new $static(array_fetch(this->items, key));
-    }
-    
+  
 
     public function map(<\Closure> callback)
     {
@@ -76,25 +71,6 @@ class Collection
         return this->items;
     }
 
-
-    public function first(<\Closure> callback = null, dt = null)
-    {
-        
-        if is_null(callback) {
-            
-            return 
-            count(this->items) > 0 ? reset(this->items) : null;
-        }
-        
-        return array_first(this->items, callback, dt);
-    }
-
-
-    public function flatten()
-    {
-        
-        return new $static(array_flatten(this->items));
-    }
 
     public function get(key, dt = null)
     {

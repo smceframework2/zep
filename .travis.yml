@@ -20,7 +20,6 @@ before_script:
 - chmod -R 777 .
 - mv ../smce smce
 - cd smce
-- ls -a
 - zephir build
 - echo "extension = smce.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
 - sudo service apache2 restart
