@@ -11,12 +11,11 @@ class App
 
     public function __construct() -> void
     {
+
         var config, key, value;
     
         let this->data["baseurl"] = self::baseUrl();
         let this->data["ip"] = this->getIP();
-        let this->data["controller"] = str_replace("controller","",strtolower(Smceframework::controller)) ;
-        let this->data["action"] = str_replace("action","",strtolower(Smceframework::action)) ;
 
         let config =  EventManager::pull("config");
         
@@ -29,6 +28,10 @@ class App
     
     public function __get(name)
     {
+
+        let this->data["controller"] = str_replace("controller","",strtolower(Smceframework::controller)) ;
+        let this->data["action"] = str_replace("action","",strtolower(Smceframework::action)) ;
+        
         if isset this->data[strtolower(name)]
         {
 

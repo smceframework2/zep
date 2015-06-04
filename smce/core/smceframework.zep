@@ -12,7 +12,7 @@ use Smce\Mvc\Acl;
 use Smce\Sm;
 use Smce\Core\Di\DiSingleton;
 
-class SmceFramework
+class Smceframework
 {
 
     /**
@@ -49,8 +49,8 @@ class SmceFramework
         {
              
              
-             let self::$controller = ucfirst(Di::resolve("router")->getControllerName()) . "Controller";
-             let self::$action =  "action" . ucfirst(Di::resolve("router")->getActionName());
+             let self::controller = ucfirst(Di::resolve("router")->getControllerName()) . "Controller";
+             let self::action =  "action" . ucfirst(Di::resolve("router")->getActionName());
 
         }else{
 

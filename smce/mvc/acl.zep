@@ -44,16 +44,18 @@ class Acl
     public function run()
     {
        
-        var value,  ip;
+        var value,  ip, control=false;
     
         let ip=Sm::app()->ip;
-        
+
+             
+
         for value in this->rules
         {
 
             if in_array(Sm::app()->action,value["actions"] )
             {
-
+                let control=true;
                    
                 if isset value["ip"] && in_array(ip, value["ip"]) == true 
                 {
@@ -64,30 +66,23 @@ class Acl
                  
                
 
-                if this->loginControl(value["users"])==false
-                {
-
-                    if isset value["redirect"]
-                    {
-
-                        this->redirect(value["redirect"]);
-                    }
-                   
-                     throw new HttpException(404, "You do not have authority to allow");
-                }
-
                
                 if isset value["expression"] && this->expressionControl(value["expression"]) != true 
                 {
-                     
-                     throw new HttpException(404, "You do not have authority to allow");
+                    this->redirect(value["redirect"]);
 
                 }
                        
-                    
+                  
 
             }
 
+        }
+
+        if control==false
+        {
+            this->redirect(value["redirect"]);
+           
         }
         
         
@@ -96,44 +91,17 @@ class Acl
     }
 
 
+
     private function redirect(string url)
     {
 
-        if !empty(url)
-        {
-
-            header("Location:" . url);
-            exit();
-
-        }
-    }
-
-    
-    /**
-     * @param $users
-     * @param $redirect
-     *
-     * @redirect url
-     */
-    private function loginControl(string users="")
-    {
-        var session;
-    
-        let session =  EventManager::pull("session");
-
-        if users == "@" && (session==false || !session->getLoginState())
-        {
-        
-            return false;
-
-        }else
-        {
-
-            return true;
-        }
-
+         header("refresh:4;url=".Sm::app()->baseUrl."/".url);
+         throw new HttpException(404, "You do not have authority to allow");
+         exit();
 
     }
+
+ 
     
     /**
      * @param $expression
