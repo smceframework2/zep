@@ -14,6 +14,8 @@ class Session
 {
 
 	private security;
+
+    private $iv;
 	
 	public function setSecurity(security)
 	{
@@ -46,7 +48,8 @@ class Session
         var security;
     
         let security =  this->security;
-        let _SESSION[security . key] = value;
+        let _SESSION[security . md5(sha1(key))] = this->encrypt(value);
+
         if _SESSION[security . key] 
         {
             
@@ -70,9 +73,9 @@ class Session
     
         let security =  this->security;
         
-        if isset _SESSION[security . key] {
+        if isset _SESSION[security . md5(sha1(key))] {
             
-            return _SESSION[security . key];
+            return this->decrypt(_SESSION[security . md5(sha1(key))]);
         } else {
             
             return false;
@@ -156,6 +159,18 @@ class Session
     }
 
 
+
+    private function encrypt(string str)
+    {
+        return mcrypt_encrypt(MCRYPT_RIJNDAEL_256, this->security, str, MCRYPT_MODE_CBC, this->security);
+
+    }
+
+    private function decrypt(string str)
+    {
+        return mcrypt_decrypt(MCRYPT_RIJNDAEL_256, this->security, str, MCRYPT_MODE_CBC, this->security);
+
+    }
 
 
 }
