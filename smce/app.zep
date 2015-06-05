@@ -69,8 +69,36 @@ class App
         return ip;
     }
     
+
+    public function redirect(string str,int term=0)
+    {
+        if term==0{
+
+          header("Location: ".self::baseUrl()."/".str);
+        
+        }else{
+
+            header("refresh:".term.";url=".self::baseUrl()."/".str);
+
+        }
+       
+
+    }
+
     
     
+    public function isAjax()
+    {
+
+        if(isset($_SERVER["HTTP_X_REQUESTED_WITH"]) && !empty($_SERVER["HTTP_X_REQUESTED_WITH"]) && strtolower($_SERVER["HTTP_X_REQUESTED_WITH"]) == "xmlhttprequest")
+        {
+            return true;
+        }
+
+
+    }
+
+
     public static function baseUrl()
     {
         

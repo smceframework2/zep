@@ -50,7 +50,7 @@ class Session
         let security =  this->security;
         let _SESSION[security . md5(sha1(key))] = this->encrypt(value);
 
-        if _SESSION[security . key] 
+        if _SESSION[security . md5(sha1(key))] 
         {
             
             return true;
@@ -107,9 +107,9 @@ class Session
 
         let security =  this->security;
 
-        if isset(_SESSION[security . key])
+        if isset(_SESSION[security . md5(sha1(key))])
         {
-            unset(_SESSION[security . key]);
+            unset(_SESSION[security . md5(sha1(key))]);
             return true;
 
         }
