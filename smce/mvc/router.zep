@@ -752,6 +752,16 @@ class Router
 		return this->_controller;
 	}
 
+	public function setController(string str)
+	{
+		let this->_controller=str;
+	}
+
+	public  function setAction(string str)
+	{
+		let this->_action=str;
+	}
+
 	/**
 	 * Returns the processed action name
 	 */
