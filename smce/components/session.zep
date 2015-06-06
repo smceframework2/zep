@@ -75,7 +75,7 @@ class Session
         
         if isset _SESSION[security . md5(sha1(key))] {
             
-            return this->decrypt(_SESSION[security . md5(sha1(key))]);
+            return trim(this->decrypt(_SESSION[security . md5(sha1(key))]));
         } else {
             
             return false;
