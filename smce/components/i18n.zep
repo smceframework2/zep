@@ -36,21 +36,56 @@ class I18n
 	}
 
 
-	public static function t(string str)
+	public static function t(string str,array arr=[])
 	{
+		var at=[];
+		var at2=[];
 
+		var key,value,str2;
 
 		self::is();
 
 		if isset(self::langArr[str]) && !empty(self::langArr[str])
 		{
 
-			return self::langArr[str];
+			if count(arr)>0
+			{
+				for key, value in arr 
+				{
+					let at[]=key;
+					let at2[]=value;
+				}
+
+
+				let str2=str_replace(at,at2,self::langArr[str]);
+				
+				return str2;
+			}else
+			{
+				return self::langArr[str];
+			}
+			
 			
 
 		}else{
 
-			return str;
+			if count(arr)>0
+			{
+				for key, value in arr 
+				{
+					let at[]=key;
+					let at2[]=value;
+				}
+
+				
+				let str2=str_replace(at,at2,str);
+				return str2;
+
+			}else
+			{
+				return str;
+			}
+			
 		}
 
 

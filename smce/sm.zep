@@ -21,10 +21,10 @@ class Sm
     }
 
 
-    public static function t(string str)
+    public static function t(string str,array arr=[])
     {
         
-        return I18n::t(str);
+        return I18n::t(str,arr);
 
     }
 
