@@ -55,22 +55,22 @@ class Redis
         
         if !isset this->config 
         {
-            throw new Exception("redis server configuration must have \"host\" and \"port\" values in array.");
+            throw new \Exception("redis server configuration must have \"host\" and \"port\" values in array.");
         }
         
         if empty(this->config["host"]) && !empty(this->config["port"])
         {
 
-            throw new Exception("redis server configuration must have \"host\" and \"port\" not empty");
+            throw new \Exception("redis server configuration must have \"host\" and \"port\" not empty");
 
         }
 
         let this->redis =  new \Redis;
 
-        if(this->redis->connect(this->config["host"], this->config["port"]))
+        if(!this->redis->connect(this->config["host"], this->config["port"]))
         {
 
-             throw new Exception("Failed on connecting to redis server at " . $this->config["host"] . ":" . this->config["port"]);
+             throw new \Exception("Failed on connecting to redis server at " . $this->config["host"] . ":" . this->config["port"]);
 
         }
 

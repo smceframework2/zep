@@ -50,16 +50,18 @@ class Loader
     {
 
 
-        var parts, fileName="", namespa="", lastNsPos, value;
+        var parts, fileName="", namespa="", lastNsPos, value;;
 
         let className = ltrim(className, '\\');
-        let lastNsPos = strrpos(className, '\\');
-        if lastNsPos 
+        if strrpos(className, '\\')
         {
+            let lastNsPos = strrpos(className, '\\');
             let namespa = substr(className, 0, lastNsPos);
             let className = substr(className, lastNsPos + 1);
-            let fileName  = str_replace('\\', DIRECTORY_SEPARATOR, namespa) . DIRECTORY_SEPARATOR;
+            
+            let fileName  = str_replace("\\", DIRECTORY_SEPARATOR, namespa) . DIRECTORY_SEPARATOR;
         }
+
 
         let fileName .= str_replace('_', DIRECTORY_SEPARATOR, className) . ".php";
 
@@ -75,7 +77,6 @@ class Loader
                let value=value.DIRECTORY_SEPARATOR;
 
             }
-            
             if is_file(value.fileName)
             {
                 require(value.fileName);
