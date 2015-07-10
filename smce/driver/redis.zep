@@ -99,6 +99,20 @@ class Redis
         
         return this->redis->set(key, value, duration);
     }
+
+
+     /**
+     * @param string
+     * @param mixed
+     * @param int
+     *
+     * @return delete
+     */
+    public function delete(string key)
+    {
+        
+        return this->redis->delete(key);
+    }
     
     /**
      * @param string
