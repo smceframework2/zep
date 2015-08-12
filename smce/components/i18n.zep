@@ -155,7 +155,7 @@ class I18n
 				for key,value in filelist
 				{
 					let file=file_get_contents(key);
-					preg_match_all("#Sm::t\([\"|\'](.*?)[\"|\']#",file,out);
+					preg_match_all("#Sm::t\(\"(.*?)\"[ ,|, |,|\)]#",file,out);
 
 					if count(out[1])>0
 					{
