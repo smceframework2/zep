@@ -56,16 +56,15 @@ class Acl
             if in_array(Sm::app()->action,value["actions"] )
             {
                 let control=true;
-                   
-                if isset value["ip"] && in_array(ip, value["ip"]) == true 
+
+                if isset value["ip"] && !in_array(ip, value["ip"]) == true 
                 {
 
-                    throw new HttpException(404, "You do not have authority to allow");
+                    throw new HttpException(403, "You do not have authority to allow");
 
                 }
                  
                
-
                
                 if isset value["expression"] && this->expressionControl(value["expression"]) != true 
                 {
