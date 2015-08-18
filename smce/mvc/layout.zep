@@ -85,5 +85,22 @@ class Layout
 		}
 
 	}
+
+
+	public function content($url,arr=[])
+	{
+		var contentFile;
+		
+		extract(arr);
+
+		let contentFile=$url.".php";
+	
+		if is_file(contentFile) {
+			
+			require(contentFile);
+		} else {
+			throw  new HttpException(404,"Content Not Found ".contentFile);
+		}
+	}
 	
 }

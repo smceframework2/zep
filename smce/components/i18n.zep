@@ -150,7 +150,7 @@ class I18n
 
 			if count(filelist)>0
 			{
-				var key,value,liststring,out,file;
+				var key,value,liststring,out=[],file;
 
 				for key,value in filelist
 				{
