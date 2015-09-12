@@ -68,15 +68,23 @@ class I18n
 
 			if count(arr)>0
 			{
+				
+				let str2=self::langArr[str];
 				for key, value in arr 
 				{
-					let at[]=key;
-					let at2[]=value;
+					let str2=str_replace(key,value,str2);
 				}
 
+				/* ZEPHIR BUG
+					for key, value in arr 
+					{
+						let at[]=key;
+						let at2[]=value;
+					}
 
-				let str2=str_replace(at,at2,self::langArr[str]);
-				
+
+					let str2=str_replace(at,at2,self::langArr[str]);
+				*/
 				return str2;
 			}else
 			{
@@ -89,6 +97,14 @@ class I18n
 
 			if count(arr)>0
 			{
+
+				let str2=str;
+				for key, value in arr 
+				{
+					let str2=str_replace(key,value,str2);
+				}
+
+				/* ZEPHIR BUG
 				for key, value in arr 
 				{
 					let at[]=key;
@@ -97,6 +113,9 @@ class I18n
 
 				
 				let str2=str_replace(at,at2,str);
+
+				*/
+
 				return str2;
 
 			}else

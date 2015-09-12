@@ -56,10 +56,10 @@ class QueueModel
     *@param int
     *@return this
     */
-	public function addMinutes(int minute=0)
+	public function addMinutes(double minute=0)
 	{
 
-		let this->minute=this->minute+(minute*60);
+		let this->minute=this->minute+(int)(minute*60);
 
 		return this;
 	}
