@@ -178,7 +178,7 @@ class QueueListen
 	private function transactions(time)
 	{
 		
-		var arr=[],key,value,cs;
+		var arr=[],key,value,cs,e;
 
 		let arr=QueueAdapter::get(self::queKey);
 
@@ -200,7 +200,13 @@ class QueueListen
 					{
 							
 						self::lastTransactionTime(self::queKey,time());
-						cs->fire();
+						
+						try {
+						    cs->fire();
+						} catch \Exception, e {
+
+						}
+
 						QueueAdapter::remove(self::queKey,key);
 						
 					}
