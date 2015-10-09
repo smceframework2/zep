@@ -58,13 +58,13 @@ class Memcache
     {
         
         if !isset this->config {
-            throw new Exception("MemCache server configuration must have \"host\" and \"port\" values in array.");
+            throw new \Exception("MemCache server configuration must have \"host\" and \"port\" values in array.");
         }
         
         if empty(this->config["host"]) && !empty(this->config["port"]) 
         {
             
-            throw new Exception("MemCache server configuration must have \"host\" and \"port\" not empty");
+            throw new \Exception("MemCache server configuration must have \"host\" and \"port\" not empty");
 
         }
 
@@ -73,7 +73,7 @@ class Memcache
 
          if(!this->memcache->connect(this->config["host"], $this->config["port"])){
 
-             throw new Exception("Failed on connecting to memcache server at " .this->config["host"] . ":" . this->config["port"]);
+             throw new \Exception("Failed on connecting to memcache server at " .this->config["host"] . ":" . this->config["port"]);
 
         }
     }
