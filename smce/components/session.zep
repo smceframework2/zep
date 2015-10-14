@@ -24,13 +24,20 @@ class Session
 
 	}
 
+    
 
     public function register() -> void
     {
         
         if session_status() == PHP_SESSION_NONE 
         {
-
+            if $this->security!=null
+            {
+                session_name($this->security);
+            }else{
+                 session_name("smceframework");
+            }
+            
             session_start();
 
         }
