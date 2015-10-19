@@ -81,6 +81,8 @@ class App
             header("refresh:".term.";url=".self::baseUrl()."/".str);
 
         }
+
+        exit();
        
 
     }
