@@ -216,6 +216,8 @@ class QueueListen
 				
 
 			}
+		}else{
+			sleep(5);
 		}
 	}
 
