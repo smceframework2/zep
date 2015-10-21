@@ -182,7 +182,7 @@ class QueueListen
 
 		let arr=QueueAdapter::get(self::queKey);
 
-		if is_array(arr)
+		if is_array(arr) && count(arr)>0
 		{
 			for key, value in arr 
 			{ 
