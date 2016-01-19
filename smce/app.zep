@@ -100,6 +100,28 @@ class App
 
     }
 
+    public function isPost()
+    {
+
+        if(isset($_SERVER["REQUEST_METHOD"]) &&  $_SERVER["REQUEST_METHOD"] === "POST")
+        {
+            return true;
+        }
+
+
+    }
+    
+    public function isGet()
+    {
+
+        if(isset($_SERVER["REQUEST_METHOD"]) &&  $_SERVER["REQUEST_METHOD"] === "GET")
+        {
+            return true;
+        }
+
+
+    }
+
 
     public static function baseUrl()
     {

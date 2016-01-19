@@ -90,6 +90,12 @@ class QueueListen
 			let status=self::getStatus(self::queKey);
 			let statusInt=substr(status,0,1);
 
+			this->on();
+
+			this->transactions(time());
+
+			self::onPoint(self::queKey,time());
+
 			if(statusInt==2)
 			{
 
@@ -103,12 +109,6 @@ class QueueListen
 				
 			
 			}
-
-			this->on();
-
-			this->transactions(time());
-
-			self::onPoint(self::queKey,time());
 		}
 
 	}

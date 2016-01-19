@@ -70,12 +70,8 @@ class I18n
 			{
 				
 				let str2=self::langArr[str];
-				for key, value in arr 
-				{
-					let str2=str_replace(key,value,str2);
-				}
+				
 
-				/* ZEPHIR BUG
 					for key, value in arr 
 					{
 						let at[]=key;
@@ -84,7 +80,7 @@ class I18n
 
 
 					let str2=str_replace(at,at2,self::langArr[str]);
-				*/
+				
 				return str2;
 			}else
 			{
