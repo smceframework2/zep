@@ -141,7 +141,12 @@ class QueueAdapter
 		let arr=unserialize(self::adapter->get(self::prefix.queKey));
 	
 		let duration= arr[key]["duration"];
-		unset(arr[key]);
+
+		if isset(arr[key])
+		{
+			unset(arr[key]);
+		}
+		
 
 		self::replace(queKey,key,arr,duration);
 
