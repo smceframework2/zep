@@ -78,7 +78,7 @@ class QueueListen
 
 	public function start()
 	{
-		var status,statusInt,sleepInt;
+		var status,statusInt,sleepInt, e;
 
 		
 
@@ -86,29 +86,34 @@ class QueueListen
 
 		while(true)
 		{
+			try {
 
-			let status=self::getStatus(self::queKey);
-			let statusInt=substr(status,0,1);
+			    let status=self::getStatus(self::queKey);
+				let statusInt=substr(status,0,1);
 
-			this->on();
+				this->on();
 
-			this->transactions(time());
+				this->transactions(time());
 
-			self::onPoint(self::queKey,time());
+				self::onPoint(self::queKey,time());
 
-			if(statusInt==2)
-			{
+				if(statusInt==2)
+				{
 
-				break;
+					break;
 
-			}elseif(statusInt==3)
-			{
-				let sleepInt=(int)substr(status,2,strlen(status));
-			
-				sleep(sleepInt);
+				}elseif(statusInt==3)
+				{
+					let sleepInt=(int)substr(status,2,strlen(status));
 				
-			
+					sleep(sleepInt);
+					
+				
+				}
+			} catch \Exception, e {
+
 			}
+
 		}
 
 	}
